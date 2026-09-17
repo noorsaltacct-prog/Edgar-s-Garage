@@ -33,7 +33,7 @@ img{display:block;max-width:100%}
 .eyebrow i{width:16px;height:1px;background:var(--red);display:inline-block}
 .wrap{max-width:1360px;margin:0 auto;padding:0 6vw}
 .section{padding:128px 6vw}
-h2{font-family:var(--display);font-weight:900;text-transform:uppercase;line-height:.84;letter-spacing:-.055em;margin:0}
+h2{font-family:var(--display);font-weight:900;text-transform:uppercase;line-height:.98;letter-spacing:-.045em;margin:0}
 .accent{color:var(--red)}
 
 /* ---------- nav ---------- */
@@ -155,8 +155,8 @@ h2{font-family:var(--display);font-weight:900;text-transform:uppercase;line-heig
 .spot-img::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,transparent 65%,var(--panel))}
 .spot-tag{position:absolute;z-index:2;left:24px;bottom:24px;border:1px solid var(--line);background:#0A0A0Ce0;padding:10px 14px;font-family:var(--mono);font-size:9.5px;letter-spacing:.1em;color:var(--amber)}
 .spot-copy{padding:100px 6vw 80px 5vw;display:flex;flex-direction:column;justify-content:center}
-.spot-copy h2{font-size:clamp(40px,4.4vw,66px);margin-top:16px}
-.spot-copy>p{color:#B8AFA8;line-height:1.8;font-size:15px;font-weight:500;max-width:440px;margin-top:20px}
+.spot-copy h2{font-size:clamp(40px,4.4vw,66px);margin-top:20px;line-height:1.02}
+.spot-copy>p{color:#B8AFA8;line-height:1.8;font-size:15px;font-weight:500;max-width:440px;margin-top:30px}
 .points{margin-top:26px}
 .points>div{display:flex;gap:18px;padding:18px 0;border-top:1px solid var(--line-soft);transition:padding-left var(--fast) var(--ease),border-color var(--fast) var(--ease)}
 .points>div:hover{padding-left:8px;border-color:var(--red-deep)}
