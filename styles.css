@@ -11,8 +11,8 @@
   --amber:#FFFFFF;
   --muted:#9A948D;
   --muted-dim:#6E6A65;
-  --display:'Archivo Black',sans-serif;
-  --body:'Inter',sans-serif;
+  --display:'Inter Tight',Arial,sans-serif;
+  --body:'Inter Tight',Arial,sans-serif;
   --mono:'Roboto Mono',monospace;
   --ease:cubic-bezier(.16,.8,.24,1);
   --fast:.14s;
@@ -33,7 +33,7 @@ img{display:block;max-width:100%}
 .eyebrow i{width:16px;height:1px;background:var(--red);display:inline-block}
 .wrap{max-width:1360px;margin:0 auto;padding:0 6vw}
 .section{padding:128px 6vw}
-h2{font-family:var(--display);font-weight:800;text-transform:uppercase;line-height:.86;letter-spacing:-.01em;margin:0}
+h2{font-family:var(--display);font-weight:900;text-transform:uppercase;line-height:.84;letter-spacing:-.055em;margin:0}
 .accent{color:var(--red)}
 
 /* ---------- nav ---------- */
@@ -143,7 +143,7 @@ h2{font-family:var(--display);font-weight:800;text-transform:uppercase;line-heig
 .card-copy{position:absolute;left:22px;right:22px;bottom:20px;transition:transform var(--med) var(--ease)}
 .service-card:hover .card-copy{transform:translateY(-4px)}
 .card-copy small{font-family:var(--mono);color:var(--muted);font-size:9.5px;letter-spacing:.12em}
-.card-copy h3{font-family:var(--display);font-weight:800;font-size:30px;line-height:.92;margin:8px 0;text-transform:uppercase}
+.card-copy h3{font-family:var(--display);font-weight:900;font-size:30px;line-height:.9;letter-spacing:-.04em;margin:8px 0;text-transform:uppercase}
 .feature .card-copy h3{font-size:46px}
 .card-copy p{color:#C7BDB6;font-size:12.5px;max-width:400px;line-height:1.6;font-weight:500}
 
@@ -216,8 +216,9 @@ footer .brand-text b{font-size:15px}
 footer .fp{margin-left:auto;font-family:var(--mono);font-size:9.5px;color:var(--muted-dim);letter-spacing:.06em}
 
 /* ---------- reveal ---------- */
-.reveal{opacity:0;transform:translateY(16px);transition:opacity .38s var(--ease),transform .38s var(--ease)}
-.reveal.visible{opacity:1;transform:none}
+.reveal{opacity:1;transform:none;transition:opacity .38s var(--ease),transform .38s var(--ease)}
+.js-ready .reveal{opacity:0;transform:translateY(16px)}
+.js-ready .reveal.visible{opacity:1;transform:none}
 
 @media(max-width:1080px){
   .desktop,.call-pill{display:none}

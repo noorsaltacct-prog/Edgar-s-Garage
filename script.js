@@ -1,4 +1,5 @@
 (function(){
+  document.documentElement.classList.add('js-ready');
   var menuBtn=document.getElementById('menuBtn'),mobileMenu=document.getElementById('mobileMenu');
   menuBtn&&menuBtn.addEventListener('click',function(){
     var open=mobileMenu.classList.toggle('open');
@@ -32,7 +33,7 @@
   form&&form.addEventListener('submit',function(e){
     e.preventDefault();
     var d=new FormData(e.currentTarget);
-    var msg='Hi Edgar's Garage, I'd like to request mobile service.%0A%0AName: '+encodeURIComponent(d.get('name'))+
+    var msg="Hi Edgar's Garage, I'd like to request mobile service.%0A%0AName: "+encodeURIComponent(d.get('name'))+
       '%0APhone: '+encodeURIComponent(d.get('phone'))+
       '%0AVehicle: '+encodeURIComponent(d.get('vehicle'))+
       
