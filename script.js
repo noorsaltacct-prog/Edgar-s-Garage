@@ -1,44 +1,19 @@
-(function(){
-  document.documentElement.classList.add('js-ready');
-  var menuBtn=document.getElementById('menuBtn'),mobileMenu=document.getElementById('mobileMenu');
-  menuBtn&&menuBtn.addEventListener('click',function(){
-    var open=mobileMenu.classList.toggle('open');
-    menuBtn.classList.toggle('open',open);
-    menuBtn.setAttribute('aria-expanded',open);
-  });
-  mobileMenu&&mobileMenu.querySelectorAll('a').forEach(function(a){
-    a.addEventListener('click',function(){
-      mobileMenu.classList.remove('open');
-      menuBtn.classList.remove('open');
-      menuBtn.setAttribute('aria-expanded','false');
-    });
-  });
-
-  var nav=document.getElementById('siteNav');
-  var onScroll=function(){ nav.classList.toggle('scrolled', window.scrollY>10); };
-  window.addEventListener('scroll',onScroll,{passive:true});
-  onScroll();
-
-  var io=new IntersectionObserver(function(entries){
-    entries.forEach(function(e){
-      if(e.isIntersecting){ e.target.classList.add('visible'); io.unobserve(e.target); }
-    });
-  },{threshold:.12});
-  document.querySelectorAll('.reveal').forEach(function(el){ io.observe(el); });
-
-  var yearEl=document.getElementById('year');
-  if(yearEl) yearEl.textContent=new Date().getFullYear();
-
-  var form=document.getElementById('quoteForm');
-  form&&form.addEventListener('submit',function(e){
-    e.preventDefault();
-    var d=new FormData(e.currentTarget);
-    var msg="Hi Edgar's Garage, I'd like to request mobile service.%0A%0AName: "+encodeURIComponent(d.get('name'))+
-      '%0APhone: '+encodeURIComponent(d.get('phone'))+
-      '%0AVehicle: '+encodeURIComponent(d.get('vehicle'))+
-      
-      '%0AService: '+encodeURIComponent(d.get('service'))+
-      '%0AIssue: '+encodeURIComponent(d.get('issue')||'');
-    window.location.href='sms:+16615268966?&body='+msg;
-  });
-})();
+const PHONE='16615268966';
+const choices=document.querySelectorAll('#choices button');
+const guideText=document.getElementById('guideText');
+const guideSms=document.getElementById('guideSms');
+const guidance={
+"Won't start":"Vehicle will not start — request mobile diagnostics / starting-system troubleshooting.",
+"Warning light / running rough":"Warning light or rough running — request vehicle diagnostics to identify the issue.",
+"Brake issue":"Brake concern — request brake-system inspection/service.",
+"Suspension / steering issue":"Suspension or steering concern — request suspension/handling inspection.",
+"Engine issue":"Engine concern — request engine diagnostics; motor rebuild work is available when appropriate.",
+"Transmission issue":"Transmission concern — request drivetrain/transmission inspection; transmission rebuild work is available when appropriate.",
+"Something else":"Other mechanical concern — describe the symptoms in the service request so Edgar can review it."
+};
+choices.forEach(btn=>btn.addEventListener('click',()=>{choices.forEach(b=>b.classList.remove('active'));btn.classList.add('active');const text=guidance[btn.dataset.choice];guideText.textContent=text;guideSms.classList.remove('disabled');guideSms.href=`sms:+${PHONE}?&body=${encodeURIComponent("Hi Edgar, I used the service guide on your website. "+text+" My vehicle is: [YEAR] [MAKE] [MODEL]. My area is: [CITY/AREA].")}`}));
+const form=document.getElementById('serviceForm');
+const emailBtn=document.getElementById('emailBtn');
+function buildMessage(data){return `Hi Edgar, I'd like to request mobile service.\n\nVehicle: ${data.year} ${data.make} ${data.model}\nArea: ${data.area}\nService: ${data.service}\nDetails: ${data.details||'Not provided'}\n\nPlease let me know availability and next steps.`}
+form.addEventListener('submit',e=>{e.preventDefault();const data=Object.fromEntries(new FormData(form).entries());const msg=buildMessage(data);emailBtn.href=`mailto:?subject=${encodeURIComponent("Edgar's Garage Service Request - "+data.year+" "+data.make+" "+data.model)}&body=${encodeURIComponent(msg)}`;window.location.href=`sms:+${PHONE}?&body=${encodeURIComponent(msg)}`});
+form.addEventListener('input',()=>{const data=Object.fromEntries(new FormData(form).entries());if(data.year||data.make||data.model){const msg=buildMessage(data);emailBtn.href=`mailto:?subject=${encodeURIComponent("Edgar's Garage Service Request")}&body=${encodeURIComponent(msg)}`}});
