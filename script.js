@@ -1,4 +1,5 @@
 const PHONE='16615268966';
+const EMAIL='efuen213@gmail.com';
 const choices=document.querySelectorAll('#choices button');
 const guideText=document.getElementById('guideText');
 const guideSms=document.getElementById('guideSms');
@@ -15,5 +16,5 @@ choices.forEach(btn=>btn.addEventListener('click',()=>{choices.forEach(b=>b.clas
 const form=document.getElementById('serviceForm');
 const emailBtn=document.getElementById('emailBtn');
 function buildMessage(data){return `Hi Edgar, I'd like to request mobile service.\n\nVehicle: ${data.year} ${data.make} ${data.model}\nArea: ${data.area}\nService: ${data.service}\nDetails: ${data.details||'Not provided'}\n\nPlease let me know availability and next steps.`}
-form.addEventListener('submit',e=>{e.preventDefault();const data=Object.fromEntries(new FormData(form).entries());const msg=buildMessage(data);emailBtn.href=`mailto:?subject=${encodeURIComponent("Edgar's Garage Service Request - "+data.year+" "+data.make+" "+data.model)}&body=${encodeURIComponent(msg)}`;window.location.href=`sms:+${PHONE}?&body=${encodeURIComponent(msg)}`});
-form.addEventListener('input',()=>{const data=Object.fromEntries(new FormData(form).entries());if(data.year||data.make||data.model){const msg=buildMessage(data);emailBtn.href=`mailto:?subject=${encodeURIComponent("Edgar's Garage Service Request")}&body=${encodeURIComponent(msg)}`}});
+form.addEventListener('submit',e=>{e.preventDefault();const data=Object.fromEntries(new FormData(form).entries());const msg=buildMessage(data);emailBtn.href=`mailto:${EMAIL}?subject=${encodeURIComponent("Edgar's Garage Service Request - "+data.year+" "+data.make+" "+data.model)}&body=${encodeURIComponent(msg)}`;window.location.href=`sms:+${PHONE}?&body=${encodeURIComponent(msg)}`});
+form.addEventListener('input',()=>{const data=Object.fromEntries(new FormData(form).entries());if(data.year||data.make||data.model){const msg=buildMessage(data);emailBtn.href=`mailto:${EMAIL}?subject=${encodeURIComponent("Edgar's Garage Service Request")}&body=${encodeURIComponent(msg)}`}});
