@@ -1,0 +1,19 @@
+<svg viewBox="0 0 200 100" xmlns="http://www.w3.org/2000/svg">
+  <!-- Wrench shape (left) -->
+  <path d="M 15 50 Q 25 35 40 25 Q 50 20 55 25 Q 52 35 42 50 Q 35 60 25 65 Q 15 70 10 65 Z" fill="#00D4FF" opacity="0.9"/>
+  
+  <!-- Car shape (main body) -->
+  <path d="M 50 45 Q 70 40 100 40 Q 130 40 150 45 L 155 50 Q 160 55 160 65 Q 160 75 155 80 L 50 80 Q 45 75 45 65 Q 45 55 50 50 Z" fill="none" stroke="#00D4FF" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+  
+  <!-- Car window -->
+  <path d="M 60 45 L 75 40 L 120 40 L 140 50" fill="none" stroke="#00D4FF" stroke-width="1.5" opacity="0.6"/>
+  
+  <!-- Wrench (right) -->
+  <path d="M 165 50 Q 175 40 185 35 Q 195 30 190 50 Q 185 65 175 70 Q 168 72 165 65 Z" fill="#00D4FF" opacity="0.7"/>
+  
+  <!-- Wrench circle -->
+  <circle cx="190" cy="50" r="8" fill="none" stroke="#00D4FF" stroke-width="2"/>
+  
+  <!-- Accent line under car -->
+  <path d="M 50 82 Q 100 85 150 82" stroke="#00D4FF" stroke-width="1.5" fill="none" opacity="0.5"/>
+</svg>
